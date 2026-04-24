@@ -5,10 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Data Literacy Data</title>
         <style>
+            * {
+                box-sizing: border-box;
+            }
             body {
                 font-family: system-ui, sans-serif;
-                max-width: 720px;
-                margin: 3rem auto;
+                max-width: 780px;
+                margin: 2.5rem auto;
                 padding: 0 1.5rem;
                 color: #222;
                 line-height: 1.6;
@@ -17,42 +20,60 @@
                 display: flex;
                 align-items: center;
                 gap: 1rem;
-                margin-bottom: 2rem;
+                margin-bottom: 1.5rem;
             }
             header img {
-                height: 56px;
+                height: 52px;
                 border-radius: 6px;
             }
             h1 {
                 margin: 0;
                 font-size: 1.6rem;
             }
-            h2 {
-                font-size: 1.1rem;
-                margin-top: 2rem;
-                color: #444;
+            .note {
+                background: #f0f6ff;
+                border-left: 4px solid #0057b8;
+                padding: 0.7rem 1rem;
+                border-radius: 4px;
+                font-size: 0.92rem;
+                margin-bottom: 2rem;
             }
-            p {
-                margin: 0.4rem 0 1rem;
+            code {
+                background: #f3f4f6;
+                border-radius: 4px;
+                padding: 0.15em 0.4em;
+                font-size: 0.88em;
+            }
+            .folder {
+                margin-top: 1.8rem;
+            }
+            .folder-name {
+                font-size: 0.8rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: #888;
+                margin-bottom: 0.3rem;
             }
             table {
                 width: 100%;
                 border-collapse: collapse;
-                font-size: 0.95rem;
+                font-size: 0.94rem;
             }
-            th {
-                text-align: left;
-                border-bottom: 2px solid #ddd;
-                padding: 0.4rem 0.6rem;
-                color: #555;
-                font-weight: 600;
-            }
-            td {
-                padding: 0.45rem 0.6rem;
+            tr {
                 border-bottom: 1px solid #eee;
             }
-            tr:last-child td {
+            tr:last-child {
                 border-bottom: none;
+            }
+            td {
+                padding: 0.45rem 0.5rem;
+            }
+            td:last-child {
+                text-align: right;
+                color: #999;
+                font-size: 0.85rem;
+                white-space: nowrap;
             }
             a {
                 color: #0057b8;
@@ -61,119 +82,118 @@
             a:hover {
                 text-decoration: underline;
             }
-            code {
-                background: #f3f4f6;
-                border-radius: 4px;
-                padding: 0.15em 0.4em;
-                font-size: 0.9em;
-            }
-            .note {
-                background: #f0f6ff;
-                border-left: 4px solid #0057b8;
-                padding: 0.75rem 1rem;
-                border-radius: 4px;
-                font-size: 0.92rem;
+            #status {
+                color: #888;
+                font-style: italic;
             }
         </style>
     </head>
     <body>
-        <header>
-            <img src="/assets/logo.png" alt="Data Literacy logo" />
-            <h1>Data Literacy Data</h1>
-        </header>
-
         <p>
             This site hosts the datasets used in the
-            <strong>VU Data Literacy</strong> book. Every file in the repository
-            is accessible directly via its URL — no login or download required.
+            <a href="https://dataliteracy.cc">VU Data Literacy book</a>. Files
+            can be downloaded directly via their URL or browsed below. To add or
+            change files, visit the
+            <a
+                href="https://github.com/vu-communication-science/dataliteracy-data"
+                >GitHub repository</a
+            >.
         </p>
 
         <div class="note">
-            <strong>How to use:</strong> prepend
-            <code>https://data.dataliteracy.cc</code> to the file path shown
-            below. For example:<br />
+            Access any file directly at
+            <code>https://data.dataliteracy.cc/<em>path</em></code
+            >. For example:
             <code
                 >https://data.dataliteracy.cc/simulated/practice_data.csv</code
             >
         </div>
 
-        <h2>Simulated datasets</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>File</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <a href="/simulated/practice_data.csv"
-                            >simulated/practice_data.csv</a
-                        >
-                    </td>
-                    <td>General practice dataset</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/simulated/polcomm_data.csv"
-                            >simulated/polcomm_data.csv</a
-                        >
-                    </td>
-                    <td>Political communication dataset</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/simulated/fake_demo_data.csv"
-                            >simulated/fake_demo_data.csv</a
-                        >
-                    </td>
-                    <td>Fake demonstration dataset</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/simulated/robot_ancova_data.csv"
-                            >simulated/robot_ancova_data.csv</a
-                        >
-                    </td>
-                    <td>ANCOVA example dataset</td>
-                </tr>
-            </tbody>
-        </table>
+        <div id="content"><p id="status">Loading file list…</p></div>
 
-        <h2>Scripts</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>File</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <a href="/simulated/data_simulator.r"
-                            >simulated/data_simulator.r</a
-                        >
-                    </td>
-                    <td>R script used to simulate datasets</td>
-                </tr>
-                <tr>
-                    <td>
-                        <a href="/simulated/generate_demo_data.r"
-                            >simulated/generate_demo_data.r</a
-                        >
-                    </td>
-                    <td>R script to generate demonstration data</td>
-                </tr>
-            </tbody>
-        </table>
+        <script>
+            const REPO = "vu-communication-science/dataliteracy-data";
+            const BASE = "https://data.dataliteracy.cc";
+            const API_URL = `https://api.github.com/repos/${REPO}/git/trees/main?recursive=1`;
 
-        <h2>Adding or updating files</h2>
-        <p>
-            You do not need to clone the repository. Files can be added or
-            changed directly via the GitHub website. Once merged, they are
-            available here within minutes.
-        </p>
+            const SKIP_EXACT = new Set([
+                "index.html",
+                "README.md",
+                "_headers",
+                "_redirects",
+            ]);
+            const SKIP_STARTS = [".", "_", "assets/", "functions/"];
+
+            function isDataFile(item) {
+                if (item.type !== "blob") return false;
+                if (SKIP_EXACT.has(item.path)) return false;
+                if (SKIP_STARTS.some((p) => item.path.startsWith(p)))
+                    return false;
+                return true;
+            }
+
+            function formatSize(bytes) {
+                if (bytes == null) return "";
+                if (bytes < 1024) return bytes + " B";
+                if (bytes < 1024 * 1024)
+                    return (bytes / 1024).toFixed(1) + " KB";
+                return (bytes / (1024 * 1024)).toFixed(1) + " MB";
+            }
+
+            function groupByFolder(files) {
+                const groups = {};
+                for (const file of files) {
+                    const parts = file.path.split("/");
+                    const folder =
+                        parts.length > 1 ? parts.slice(0, -1).join("/") : "";
+                    if (!groups[folder]) groups[folder] = [];
+                    groups[folder].push(file);
+                }
+                return groups;
+            }
+
+            async function load() {
+                const content = document.getElementById("content");
+                try {
+                    const res = await fetch(API_URL);
+                    if (!res.ok)
+                        throw new Error(`GitHub API returned ${res.status}`);
+                    const data = await res.json();
+
+                    const files = data.tree.filter(isDataFile);
+                    if (files.length === 0) {
+                        content.innerHTML =
+                            "<p>No data files found in the repository.</p>";
+                        return;
+                    }
+
+                    const groups = groupByFolder(files);
+                    const html = [];
+
+                    for (const [folder, items] of Object.entries(groups)) {
+                        html.push('<div class="folder">');
+                        html.push(
+                            `<div class="folder-name">${folder || "/"}</div>`,
+                        );
+                        html.push("<table>");
+                        for (const item of items) {
+                            const filename = item.path.split("/").pop();
+                            const url = `${BASE}/${item.path}`;
+                            html.push(`<tr>
+                            <td><a href="${url}">${filename}</a></td>
+                            <td>${formatSize(item.size)}</td>
+                        </tr>`);
+                        }
+                        html.push("</table></div>");
+                    }
+
+                    content.innerHTML = html.join("");
+                } catch (err) {
+                    content.innerHTML = `<p style="color:red">Failed to load file list: ${err.message}</p>`;
+                }
+            }
+
+            load();
+        </script>
     </body>
 </html>
